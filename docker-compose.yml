@@ -1,0 +1,24 @@
+version: '2'
+services:
+  server:
+    # Set environment variables for server
+    environment:
+      - 'POSTGRES_HOST=postgres'
+      - 'POSTGRES_PORT=5432'
+      - 'PORT=${CURR_PORT}'
+    # Get the githash for the image from .env
+    image: gunnarbirnir/tictactoe:${GIT_COMMIT}
+    ports:
+      - '3000:3000'
+      - '80:8080'
+    # postgres will be started before server
+    depends_on:
+      - postgres
+  postgres:
+    # Set environment variables for postgres
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=mysecretpassword'
+    image: postgres
+    ports:
+      - '5432:5432'
