@@ -13,10 +13,10 @@ fi
 # Remove .git from url in order to get https link to repo
 export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
-npm install
-cd client
-npm install
-cd ..
+#npm install
+#cd client
+#npm install
+#cd ..
 
 # Build the app with build.sh
 echo "Building app"
