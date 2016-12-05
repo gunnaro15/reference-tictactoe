@@ -13,6 +13,8 @@ fi
 # Remove .git from url in order to get https link to repo
 export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
+npm install
+
 # Build the app with build.sh
 echo "Building app"
 #npm run build
@@ -77,5 +79,5 @@ if [[ $rc != 0 ]] ; then
 fi
 
 # Compose the two docker containers
-echo "Composing docker containers"
-docker-compose up
+#echo "Composing docker containers"
+#docker-compose up
