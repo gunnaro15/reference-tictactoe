@@ -7,7 +7,10 @@ rm -f .env
 echo "GIT_COMMIT=$(cat ../dist/githash.txt)" >> .env
 echo "CURR_PORT=8080" >> .env 
 
-#scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem ../docker-compose.yml ec2-user@$ADDRESS:~/docker-compose.yml
-#scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem .env ec2-user@$ADDRESS:~/.env
+sleep 100
+
+scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem ../docker-compose.yml ec2-user@$ADDRESS:~/docker-compose.yml
+scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem .env ec2-user@$ADDRESS:~/.env
+scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem run_app.sh ec2-user@$ADDRESS:~/run_app.sh
 
 echo "Address: $ADDRESS"
