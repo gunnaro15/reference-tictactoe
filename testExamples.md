@@ -1,12 +1,12 @@
 ## Test Examples
 
-# 1. Create game command
+**1. Create game command**
 
 Given []
 When [CreateGame]
 Then [GameCreated]
 
-# 2. Join game command
+**2. Join game command**
 
 Given [GameCreated]
 When [JoinGame]
@@ -16,7 +16,7 @@ Given [GameCreated, GameJoined]
 When [JoinGame]
 Then [FullGameJoinAttempted]
 
-# 3. Place move command
+**3. Place move command**
 
 Given [GameCreated, GameJoined]
 When [PlaceMove(0,0,X)]
