@@ -80,7 +80,7 @@ fi
 #echo "Composing docker containers"
 #docker-compose up
 
-cd provisioning
+cd ../provisioning
 
 rm -f .env
 echo "GIT_COMMIT=$(cat ../dist/githash.txt)" >> .env
