@@ -79,3 +79,9 @@ fi
 # Compose the two docker containers
 #echo "Composing docker containers"
 #docker-compose up
+
+cd provisioning
+
+rm -f .env
+echo "GIT_COMMIT=$(cat ../dist/githash.txt)" >> .env
+echo "CURR_PORT=8080" >> .env 
