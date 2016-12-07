@@ -9,7 +9,6 @@ var tictactoe = require('./tictactoe-handler')(inject({
 
 describe('create game command', function () {
 
-
     var given, when, then;
 
     beforeEach(function () {
@@ -23,7 +22,6 @@ describe('create game command', function () {
             should(JSON.stringify(actualEvents)).be.exactly(JSON.stringify(then));
         });
     });
-
 
     it('should emit game created event', function () {
 
@@ -53,9 +51,7 @@ describe('create game command', function () {
     })
 });
 
-
 describe('join game command', function () {
-
 
     var given, when, then;
 
@@ -71,17 +67,17 @@ describe('join game command', function () {
         });
     });
 
-
     it('should emit game joined event...', function () {
 
-        given = [{
-            type: "GameCreated",
-            user: {
-                userName: "TheGuy"
-            },
-            name: "TheFirstGame",
-            timeStamp: "2014-12-02T11:29:29"
-        }
+        given = [
+            {
+                type: "GameCreated",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29"
+            }
         ];
         when =
         {
@@ -107,7 +103,6 @@ describe('join game command', function () {
     });
 
     it('should emit FullGameJoinAttempted event when game full..implement this', function () {
-
 
         given = [
             {
@@ -151,4 +146,66 @@ describe('join game command', function () {
     });
 });
 
+describe('place move command', function () {
 
+    var given, when, then;
+
+    beforeEach(function () {
+        given = undefined;
+        when = undefined;
+        then = undefined;
+    });
+
+    afterEach(function () {
+        tictactoe(given).executeCommand(when, function (actualEvents) {
+            should(JSON.stringify(actualEvents)).be.exactly(JSON.stringify(then));
+        });
+    });
+
+    it('should emit move placed event', function () {
+
+        given = [
+            {
+                type: "GameCreated",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29"
+            },
+            {
+                type: "GameJoined",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29",
+                side: 'O'
+            }
+        ];
+        when =
+        {
+            type: "PlaceMove",
+            user: {
+                userName: "TheGuy"
+            },
+            name: "TheFirstGame",
+            timeStamp: "2014-12-02T11:30:29",
+            side: 'X',
+            move: "0,0"
+        };
+        then = [
+            {
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:30:29",
+                side: 'X',
+                move: "0,0"
+            }
+        ];
+
+    })
+});

@@ -23,7 +23,6 @@ module.exports = function (injected) {
         processEvents(history);
 
         return {
-
             gameFull:gameFull,
             processEvents: processEvents
         }
