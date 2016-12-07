@@ -82,4 +82,5 @@ fi
 
 cd ../provisioning
 
+chmod 600 gunnar-key-pair.pem
 ./provision.sh
