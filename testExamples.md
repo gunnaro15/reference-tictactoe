@@ -32,19 +32,19 @@ Then [NotYourMove]
 
 Given [MovePlaced(0,0,X), MovePlaced(1,0,X)]  
 When [PlaceMove(2,0,X)]  
-Then [GameWon(X)]
+Then [MovePlaced(2,0,X), GameWon(X)]
 
 Given [MovePlaced(0,0,O), MovePlaced(0,1,O)]  
 When [PlaceMove(0,2,O)]  
-Then [GameWon(O)]
+Then [MovePlaced(0,2,O), GameWon(O)]
 
 Given [MovePlaced(0,0,X), MovePlaced(1,1,X)]  
 When [PlaceMove(2,2,X)]  
-Then [GameWon(X)]
+Then [MovePlaced(2,2,X), GameWon(X)]
 
 Given [MovePlaced(0,2,O), MovePlaced(1,1,O)]  
 When [PlaceMove(2,0,O)]  
-Then [GameWon(O)]
+Then [MovePlaced(2,0,O), GameWon(O)]
 
 Given [GameWon(X)]  
 When [PlaceMove(0,0,O)]  
@@ -52,4 +52,4 @@ Then [GameIsOver]
 
 Given [8 MovePlaced]  
 When [PlaceMove]  
-Then [Draw]
+Then [MovePlaced, Draw]
