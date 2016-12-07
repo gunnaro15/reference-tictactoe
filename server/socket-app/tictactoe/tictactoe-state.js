@@ -4,12 +4,23 @@ module.exports = function (injected) {
 
     return function (history) {
 
-        var gamefull=false;
+        var gamefull = false;
+        var moves = [];
 
         function processEvent(event) {
             if(event.type==="GameJoined"){
                 gamefull=true;
             }
+            if(event.type==="MovePlaced"){
+                moves.push(event.move);
+            }
+        }
+
+        function legalMove(move) {
+            for(var i=0; i<moves.length; i++) {
+                if(moves[i]===move) return false;
+            }
+            return true;
         }
 
         function processEvents(history) {
@@ -23,7 +34,8 @@ module.exports = function (injected) {
         processEvents(history);
 
         return {
-            gameFull:gameFull,
+            legalMove: legalMove,
+            gameFull: gameFull,
             processEvents: processEvents
         }
     };

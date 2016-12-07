@@ -43,8 +43,19 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
+                        if(!gameState.legalMove(cmd.move)){
+                            eventHandler( [{
+                                type: "IllegalMove",
+                                user: cmd.user,
+                                name: cmd.name,
+                                timeStamp: cmd.timeStamp,
+                                side: cmd.side,
+                                move: cmd.move
+                            }]);
+                            return;
+                        }
+
                         eventHandler([{
-                            gameId: cmd.gameId,
                             type: "MovePlaced",
                             user: cmd.user,
                             name: cmd.name,

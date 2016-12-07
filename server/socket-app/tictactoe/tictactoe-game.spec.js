@@ -208,4 +208,44 @@ describe('place move command', function () {
         ];
 
     })
+
+    it('should emit illegal move event', function () {
+
+        given = [
+            {
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:30:29",
+                side: 'X',
+                move: "0,0"
+            },
+        ];
+        when =
+        {
+            type: "PlaceMove",
+            user: {
+                userName: "Gummi"
+            },
+            name: "TheFirstGame",
+            timeStamp: "2014-12-02T11:31:29",
+            side: 'O',
+            move: "0,0"
+        };
+        then = [
+            {
+                type: "IllegalMove",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:31:29",
+                side: 'O',
+                move: "0,0",
+            }
+        ];
+
+    })
 });
