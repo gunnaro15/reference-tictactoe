@@ -37,6 +37,11 @@ _EOF_
 echo "GIT_COMMIT=$(cat ./dist/githash.txt)" >> ./build/.env
 echo "CURR_PORT=3000" >> ./build/.env 
 
+# Put the githash into a .env file for jenkins
+rm -f jenkins/.env
+echo "GIT_COMMIT=$(cat ./dist/githash.txt)" >> jenkins/.env
+echo "CURR_PORT=8080" >> jenkins/.env
+
 # Create html file for retrieving version information
 cat > ./dist/public/version.html << _EOF_
 <!doctype html>
@@ -75,12 +80,3 @@ if [[ $rc != 0 ]] ; then
     echo "Docker push failed " $rc
     exit $rc
 fi
-
-# Compose the two docker containers
-#echo "Composing docker containers"
-#docker-compose up
-
-cd ../provisioning
-
-#chmod 600 gunnar-key-pair.pem
-./provision.sh
