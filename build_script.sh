@@ -15,7 +15,6 @@ export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
 # Build the app with build.sh
 echo "Building app"
-#npm run build
 ./build.sh
 rc=$?
 if [[ $rc != 0 ]] ; then
