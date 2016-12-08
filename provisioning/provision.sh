@@ -9,10 +9,10 @@ echo "CURR_PORT=8080" >> .env
 
 #sleep 100
 
-export ADDRESS=52.51.183.141
+#export ADDRESS=52.51.183.141
 
-scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem ../docker-compose.yml ec2-user@$ADDRESS:~/docker-compose.yml
-scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem .env ec2-user@$ADDRESS:~/.env
+#scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem ../docker-compose.yml ec2-user@$ADDRESS:~/docker-compose.yml
+#scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem .env ec2-user@$ADDRESS:~/.env
 #scp -o StrictHostKeyChecking=no -i gunnar-key-pair.pem run_app.sh ec2-user@$ADDRESS:~/run_app.sh
 
 #echo "Address: $ADDRESS"
