@@ -28,7 +28,7 @@ describe('create game command', function () {
         given = [];
         when =
         {
-            id: "123987",
+            gameId: "123987",
             type: "CreateGame",
             user: {
                 userName: "TheGuy"
@@ -38,6 +38,7 @@ describe('create game command', function () {
         };
         then = [
             {
+                gameId: "123987",
                 type: "GameCreated",
                 user: {
                     userName: "TheGuy"
@@ -71,6 +72,7 @@ describe('join game command', function () {
 
         given = [
             {
+                gameId: "123987",
                 type: "GameCreated",
                 user: {
                     userName: "TheGuy"
@@ -81,6 +83,7 @@ describe('join game command', function () {
         ];
         when =
         {
+            gameId: "123987",
             type: "JoinGame",
             user: {
                 userName: "Gummi"
@@ -90,6 +93,7 @@ describe('join game command', function () {
         };
         then = [
             {
+                gameId: "123987",
                 type: "GameJoined",
                 user: {
                     userName: "Gummi"
@@ -106,6 +110,7 @@ describe('join game command', function () {
 
         given = [
             {
+                gameId: "123987",
                 type: "GameCreated",
                 user: {
                     userName: "TheGuy"
@@ -114,6 +119,7 @@ describe('join game command', function () {
                 timeStamp: "2014-12-02T11:29:29"
             },
             {
+                gameId: "123987",
                 type: "GameJoined",
                 user: {
                     userName: "Gummi"
@@ -125,6 +131,7 @@ describe('join game command', function () {
         ];
         when =
         {
+            gameId: "123987",
             type: "JoinGame",
             user: {
                 userName: "Gulli"
@@ -134,6 +141,7 @@ describe('join game command', function () {
         };
         then = [
             {
+                gameId: "123987",
                 type: "FullGameJoinAttempted",
                 user: {
                     userName: "Gulli"
@@ -166,6 +174,7 @@ describe('place move command', function () {
 
         given = [
             {
+                gameId: "123987",
                 type: "GameCreated",
                 user: {
                     userName: "TheGuy"
@@ -174,6 +183,7 @@ describe('place move command', function () {
                 timeStamp: "2014-12-02T11:29:29"
             },
             {
+                gameId: "123987",
                 type: "GameJoined",
                 user: {
                     userName: "Gummi"
@@ -185,6 +195,7 @@ describe('place move command', function () {
         ];
         when =
         {
+            gameId: "123987",
             type: "PlaceMove",
             user: {
                 userName: "TheGuy"
@@ -192,10 +203,11 @@ describe('place move command', function () {
             name: "TheFirstGame",
             timeStamp: "2014-12-02T11:30:29",
             side: 'X',
-            move: "0,0"
+            move: { r: 0, c: 0 }
         };
         then = [
             {
+                gameId: "123987",
                 type: "MovePlaced",
                 user: {
                     userName: "TheGuy"
@@ -203,7 +215,7 @@ describe('place move command', function () {
                 name: "TheFirstGame",
                 timeStamp: "2014-12-02T11:30:29",
                 side: 'X',
-                move: "0,0"
+                move: { r: 0, c: 0 }
             }
         ];
 
@@ -213,6 +225,26 @@ describe('place move command', function () {
 
         given = [
             {
+                gameId: "123987",
+                type: "GameCreated",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29"
+            },
+            {
+                gameId: "123987",
+                type: "GameJoined",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29",
+                side: 'O'
+            },
+            {
+                gameId: "123987",
                 type: "MovePlaced",
                 user: {
                     userName: "TheGuy"
@@ -220,11 +252,12 @@ describe('place move command', function () {
                 name: "TheFirstGame",
                 timeStamp: "2014-12-02T11:30:29",
                 side: 'X',
-                move: "0,0"
+                move: { r: 0, c: 0 }
             },
         ];
         when =
         {
+            gameId: "123987",
             type: "PlaceMove",
             user: {
                 userName: "Gummi"
@@ -232,10 +265,11 @@ describe('place move command', function () {
             name: "TheFirstGame",
             timeStamp: "2014-12-02T11:31:29",
             side: 'O',
-            move: "0,0"
+            move: { r: 0, c: 0 }
         };
         then = [
             {
+                gameId: "123987",
                 type: "IllegalMove",
                 user: {
                     userName: "Gummi"
@@ -243,7 +277,7 @@ describe('place move command', function () {
                 name: "TheFirstGame",
                 timeStamp: "2014-12-02T11:31:29",
                 side: 'O',
-                move: "0,0",
+                move: { r: 0, c: 0 }
             }
         ];
 

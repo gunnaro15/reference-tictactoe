@@ -23,7 +23,7 @@ module.exports = function(injected){
                     },
                     "JoinGame": function (cmd) {
                         if(gameState.gameFull()){
-                            eventHandler( [{
+                            eventHandler([{
                                 gameId: cmd.gameId,
                                 type: "FullGameJoinAttempted",
                                 user: cmd.user,
@@ -43,8 +43,9 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
-                        if(!gameState.legalMove(cmd.move)){
+                        if(gameState.cellTaken(cmd.move)){
                             eventHandler( [{
+                                gameId: cmd.gameId,
                                 type: "IllegalMove",
                                 user: cmd.user,
                                 name: cmd.name,
@@ -56,6 +57,7 @@ module.exports = function(injected){
                         }
 
                         eventHandler([{
+                            gameId: cmd.gameId,
                             type: "MovePlaced",
                             user: cmd.user,
                             name: cmd.name,
@@ -65,7 +67,6 @@ module.exports = function(injected){
                         }]);
 
                         // Check here for conditions which prevent command from altering state
-
                         //gameState.processEvents(events);
 
                         // Check here for conditions which may warrant additional events to be emitted.
