@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="place move command" timestamp="2016-12-09T09:22:28" hostname="localhost" time="0.004" errors="0" tests="3" skipped="0" disabled="0" failures="0">
-  <testcase classname="place move command" name="should emit move placed event" time="0.001" />
-  <testcase classname="place move command" name="should emit illegal move event" time="0.001" />
+ <testsuite name="place move command" timestamp="2016-12-09T10:19:54" hostname="localhost" time="0.007" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname="place move command" name="should emit move placed event" time="0.002" />
+  <testcase classname="place move command" name="should emit illegal move event" time="0" />
   <testcase classname="place move command" name="should emit not your move event" time="0.001" />
+  <testcase classname="place move command" name="should emit game won event" time="0.003" />
  </testsuite>
 </testsuites>

@@ -14,10 +14,10 @@ module.exports = function (injected) {
 
         function processEvent(event) {
             console.log(event.type);
-            if(event.type==="GameJoined"){
+            if(event.type==="GameJoined") {
                 gamefull=true;
             }
-            if(event.type==="MovePlaced"){
+            if(event.type==="MovePlaced") {
                 board[event.move.r][event.move.c] = event.side;
                 lastmove = event.side;
                 console.log('cell(' + event.move.r + ', ' + event.move.c + ') = ' + event.side);
@@ -31,7 +31,7 @@ module.exports = function (injected) {
 
         processEvents(history);
 
-        function gameFull(){
+        function gameFull() {
             return gamefull;
         }
 
@@ -39,8 +39,23 @@ module.exports = function (injected) {
             return board[move.r][move.c] !== '.';
         }
 
-        function lastMove(){
+        function lastMove() {
             return lastmove;
+        }
+
+        function gameWon(side) {
+            if((board[0][0] === side && board[1][1] === side && board[2][2] === side) ||
+            (board[0][2] === side && board[1][1] === side && board[2][0] === side)) return true;
+
+            for(var i = 0; i < 3;i++)
+            {
+                for(var j = 0; j < 3;j++)
+                {
+                    if((board[i][0] == side && board[i][1] == side && board[i][2] == side) ||
+                    (board[0][j] == side && board[1][j] == side && board[2][j] == side)) return true;
+                }
+            }
+            return false;
         }
 
         function printBoard() {
@@ -50,6 +65,7 @@ module.exports = function (injected) {
         }
 
         return {
+            gameWon: gameWon,
             lastMove: lastMove,
             cellTaken: cellTaken,
             gameFull: gameFull,

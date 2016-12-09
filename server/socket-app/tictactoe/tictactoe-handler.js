@@ -69,7 +69,7 @@ module.exports = function(injected){
                             return;
                         }
 
-                        eventHandler([{
+                        var events = [{
                             gameId: cmd.gameId,
                             type: "MovePlaced",
                             user: cmd.user,
@@ -77,7 +77,23 @@ module.exports = function(injected){
                             timeStamp: cmd.timeStamp,
                             side: cmd.side,
                             move: cmd.move
-                        }]);
+                        }];
+
+                        gameState.processEvents(events);
+
+                        if(gameState.gameWon(cmd.side)) {
+                            events.push({
+                                gameId: cmd.gameId,
+                                type: "GameWon",
+                                user: cmd.user,
+                                name: cmd.name,
+                                timeStamp: cmd.timeStamp,
+                                side: cmd.side,
+                                move: cmd.move
+                            });
+                        };
+
+                        eventHandler(events);
 
                         // Check here for conditions which prevent command from altering state
                         //gameState.processEvents(events);
