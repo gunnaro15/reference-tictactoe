@@ -7,7 +7,7 @@ var tictactoe = require('./tictactoe-handler')(inject({
     TictactoeState
 }));
 
-describe('create game command', function() {
+describe('CreateGame command', function() {
 
     var given, when, then;
 
@@ -23,7 +23,7 @@ describe('create game command', function() {
         });
     });
 
-    it('should emit game created event', function () {
+    it('should emit GameCreated event', function () {
 
         given = [];
         when =
@@ -35,7 +35,6 @@ describe('create game command', function() {
             },
             name: "TheFirstGame",
             timeStamp: "2014-12-02T11:29:29",
-            side:'X'
         };
         then = [
             {
@@ -53,7 +52,7 @@ describe('create game command', function() {
     })
 });
 
-describe('join game command', function () {
+describe('JoinGame command', function () {
 
     var given, when, then;
 
@@ -69,7 +68,7 @@ describe('join game command', function () {
         });
     });
 
-    it('should emit game joined event...', function () {
+    it('should emit GameJoined event', function () {
 
         given = [
             {
@@ -91,8 +90,7 @@ describe('join game command', function () {
                 userName: "Gummi"
             },
             name: "TheFirstGame",
-            timeStamp: "2014-12-02T11:29:29",
-            side:'O'
+            timeStamp: "2014-12-02T11:29:39",
         };
         then = [
             {
@@ -102,7 +100,7 @@ describe('join game command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side:'O'
             }
         ];
@@ -129,7 +127,7 @@ describe('join game command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             }
         ];
@@ -157,7 +155,7 @@ describe('join game command', function () {
     });
 });
 
-describe('place move command', function () {
+describe('PlaceMove command', function () {
 
     var given, when, then;
 
@@ -173,7 +171,7 @@ describe('place move command', function () {
         });
     });
 
-    it('should emit move placed event', function () {
+    it('should emit MovePlaced event', function () {
 
         given = [
             {
@@ -193,7 +191,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             }
         ];
@@ -225,7 +223,7 @@ describe('place move command', function () {
 
     })
 
-    it('should emit illegal move event', function () {
+    it('should emit IllegalMove event when cell is taken', function () {
 
         given = [
             {
@@ -245,7 +243,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             },
             {
@@ -287,7 +285,7 @@ describe('place move command', function () {
         ];
     })
 
-    it('should emit not your move event', function () {
+    it('should emit NotYourMove event when player makes two moves in a row', function () {
 
         given = [
             {
@@ -307,7 +305,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             },
             {
@@ -349,7 +347,7 @@ describe('place move command', function () {
         ];
     })
 
-    it('should emit game won event', function () {
+    it('should emit MovePlaced and GameWon events when player makes a winning move (horizontal)', function () {
 
         given = [
             {
@@ -369,7 +367,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             },
             {
@@ -455,7 +453,7 @@ describe('place move command', function () {
         ];
     })
 
-    it('should emit game won event', function () {
+    it('should emit MovePlaced and GameWon events when player makes a winning move (vertical)', function () {
 
         given = [
             {
@@ -475,7 +473,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             },
             {
@@ -561,7 +559,7 @@ describe('place move command', function () {
         ];
     })
 
-    it('should emit game won event', function () {
+    it('should emit MovePlaced and GameWon events when player makes a winning move (across left to right)', function () {
 
         given = [
             {
@@ -581,7 +579,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             },
             {
@@ -667,7 +665,7 @@ describe('place move command', function () {
         ];
     })
 
-    it('should emit game won event', function () {
+    it('should emit MovePlaced and GameWon events when player makes a winning move (across right to left)', function () {
 
         given = [
             {
@@ -687,7 +685,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:29:29",
+                timeStamp: "2014-12-02T11:29:39",
                 side: 'O'
             },
             {
@@ -741,7 +739,7 @@ describe('place move command', function () {
                     userName: "TheGuy"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:32:29",
+                timeStamp: "2014-12-02T11:34:29",
                 side: 'X',
                 move: { r: 0, c: 1 }
             },
@@ -754,7 +752,7 @@ describe('place move command', function () {
                 userName: "Gummi"
             },
             name: "TheFirstGame",
-            timeStamp: "2014-12-02T11:34:29",
+            timeStamp: "2014-12-02T11:35:29",
             side: 'O',
             move: { r: 2, c: 0 }
         };
@@ -766,7 +764,7 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:34:29",
+                timeStamp: "2014-12-02T11:35:29",
                 side: 'O',
                 move: { r: 2, c: 0 }
             },
@@ -777,9 +775,159 @@ describe('place move command', function () {
                     userName: "Gummi"
                 },
                 name: "TheFirstGame",
-                timeStamp: "2014-12-02T11:34:29",
+                timeStamp: "2014-12-02T11:35:29",
                 side: 'O',
                 move: { r: 2, c: 0 }
+            }
+        ];
+    })
+
+    it('should emit GameDraw event when game is over and neither has won', function () {
+
+        given = [
+            {
+                gameId: "123987",
+                type: "GameCreated",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29",
+                side:'X'
+            },
+            {
+                gameId: "123987",
+                type: "GameJoined",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:39",
+                side: 'O'
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:30:29",
+                side: 'X',
+                move: { r: 0, c: 1 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:31:29",
+                side: 'O',
+                move: { r: 0, c: 0 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:32:29",
+                side: 'X',
+                move: { r: 1, c: 1 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:33:29",
+                side: 'O',
+                move: { r: 0, c: 2 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:34:29",
+                side: 'X',
+                move: { r: 1, c: 2 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:35:29",
+                side: 'O',
+                move: { r: 1, c: 0 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:36:29",
+                side: 'X',
+                move: { r: 2, c: 0 }
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:37:29",
+                side: 'O',
+                move: { r: 2, c: 1 }
+            },
+        ];
+        when =
+        {
+            gameId: "123987",
+            type: "PlaceMove",
+            user: {
+                userName: "TheGuy"
+            },
+            name: "TheFirstGame",
+            timeStamp: "2014-12-02T11:38:29",
+            side: 'X',
+            move: { r: 2, c: 2 }
+        };
+        then = [
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:38:29",
+                side: 'X',
+                move: { r: 2, c: 2 }
+            },
+            {
+                gameId: "123987",
+                type: "GameDraw",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:38:29",
+                side: 'X',
+                move: { r: 2, c: 2 }
             }
         ];
     })

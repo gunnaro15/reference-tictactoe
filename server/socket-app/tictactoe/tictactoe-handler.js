@@ -56,7 +56,7 @@ module.exports = function(injected){
                             return;
                         }
 
-                        if(gameState.lastMove()===cmd.side){
+                        if(gameState.sameLastMove(cmd.side)){
                             eventHandler([{
                                 gameId: cmd.gameId,
                                 type: "NotYourMove",
@@ -91,7 +91,20 @@ module.exports = function(injected){
                                 side: cmd.side,
                                 move: cmd.move
                             });
-                        };
+                        }
+
+                        else if(gameState.gameOver()){
+                            events.push({
+                                gameId: cmd.gameId,
+                                type: "GameDraw",
+                                user: cmd.user,
+                                name: cmd.name,
+                                timeStamp: cmd.timeStamp,
+                                side: cmd.side,
+                                move: cmd.move
+                            });
+                            return;
+                        }
 
                         eventHandler(events);
 
