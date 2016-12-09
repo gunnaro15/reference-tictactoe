@@ -107,7 +107,7 @@ describe('JoinGame command', function () {
 
     });
 
-    it('should emit FullGameJoinAttempted event when game full', function () {
+    it('should emit FullGameJoinAttempted event when game is full', function () {
 
         given = [
             {
@@ -223,7 +223,7 @@ describe('PlaceMove command', function () {
 
     })
 
-    it('should emit IllegalMove event when cell is taken', function () {
+    it('should emit IllegalMove event when cell is already occupied', function () {
 
         given = [
             {
@@ -285,7 +285,7 @@ describe('PlaceMove command', function () {
         ];
     })
 
-    it('should emit NotYourMove event when player makes two moves in a row', function () {
+    it('should emit NotYourMove event if attempting to make move out of turn', function () {
 
         given = [
             {
