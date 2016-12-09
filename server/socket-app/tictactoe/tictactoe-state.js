@@ -4,6 +4,7 @@ module.exports = function (injected) {
 
     return function (history) {
 
+        const board_size = 3;
         var gamefull = false;
         var board = [
             ['.', '.', '.'],
@@ -49,9 +50,9 @@ module.exports = function (injected) {
             if((board[0][0] === side && board[1][1] === side && board[2][2] === side) ||
             (board[0][2] === side && board[1][1] === side && board[2][0] === side)) return true;
 
-            for(var i = 0; i < 3; i++)
+            for(var i = 0; i < board_size; i++)
             {
-                for(var j = 0; j < 3; j++)
+                for(var j = 0; j < board_size; j++)
                 {
                     if((board[i][0] == side && board[i][1] == side && board[i][2] == side) ||
                     (board[0][j] == side && board[1][j] == side && board[2][j] == side)) return true;
@@ -61,11 +62,11 @@ module.exports = function (injected) {
         }
 
         function gameOver() {
-            return movecount===9;
+            return movecount===(board_size*board_size);
         }
 
         function printBoard() {
-            for(var i=0; i<3; i++) {
+            for(var i=0; i<board_size; i++) {
                 console.log(board[i][0] + ' ' + board[i][1] + ' ' + board[i][2]);
             }
         }
