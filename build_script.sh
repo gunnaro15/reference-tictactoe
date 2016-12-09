@@ -28,11 +28,11 @@ fi
 # Run unit tests
 echo "Running tests"
 npm run test
-#rc=$?
-#if [[ $rc != 0 ]] ; then
-#    echo "Npm test failed with exit code " $rc
-#    exit $rc
-#fi
+rc=$?
+if [[ $rc != 0 ]] ; then
+    echo "Npm test failed with exit code " $rc
+    exit $rc
+fi
 
 # Put the githash into a file
 cat > ./dist/githash.txt <<_EOF_
