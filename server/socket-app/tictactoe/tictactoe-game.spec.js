@@ -31,7 +31,7 @@ describe('CreateGame command', function() {
             gameId: "123987",
             type: "CreateGame",
             user: {
-                userName: "TheGuy"
+                userName: "TheGu"
             },
             name: "TheFirstGame",
             timeStamp: "2014-12-02T11:29:29",
