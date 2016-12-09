@@ -48,4 +48,4 @@ Then [MovePlaced(2,0,O), GameWon(O)]
 
 Given [GameCreated, GameJoined, MovePlaced(0,1,X), MovePlaced(0,0,O), MovePlaced(1,1,X), MovePlaced(0,2,O), MovePlaced(1,2,X), MovePlaced(1,0,O), MovePlaced(2,0,X), MovePlaced(2,1,O)]  
 When [PlaceMove(2,2,X)]  
-Then [MovePlaced(2,2,X), GameDraw(X)]
+Then [MovePlaced(2,2,X), GameDraw]
