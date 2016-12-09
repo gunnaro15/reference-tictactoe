@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="CreateGame command" timestamp="2016-12-09T18:04:08" hostname="localhost" time="0.008" errors="0" tests="1" skipped="0" disabled="0" failures="1">
-  <testcase classname="CreateGame command" name="should emit GameCreated event" time="0.008">
-   <failure type="exception" message="AssertionError: expected &apos;[{&quot;gameId&quot;:&quot;123987&quot;,&quot;type&quot;:&quot;GameCreated&quot;,&quot;user&quot;:{&quot;userName&quot;:&quot;TheGu&quot;},&quot;name&quot;:&quot;TheFirstGame&quot;,&quot;timeStamp&quot;:&quot;2014-12-02T11:29:29&quot;,&quot;side&quot;:&quot;X&quot;}]&apos; to be &apos;[{&quot;gameId&quot;:&quot;123987&quot;,&quot;type&quot;:&quot;GameCreated&quot;,&quot;user&quot;:{&quot;userName&quot;:&quot;TheGuy&quot;},&quot;name&quot;:&quot;TheFirstGame&quot;,&quot;timeStamp&quot;:&quot;2014-12-02T11:29:29&quot;,&quot;side&quot;:&quot;X&quot;}]&apos;"><![CDATA[AssertionError: expected '[{"gameId":"123987","type":"GameCreated","user":{"userName":"TheGu"},"name":"TheFirstGame","timeStamp":"2014-12-02T11:29:29","side":"X"}]' to be '[{"gameId":"123987","type":"GameCreated","user":{"userName":"TheGuy"},"name":"TheFirstGame","timeStamp":"2014-12-02T11:29:29","side":"X"}]'
-    at Assertion.fail (/Users/gunnarbirnir/Documents/reference-tictactoe/node_modules/should/cjs/should.js:205:17)
-    at Assertion.value (/Users/gunnarbirnir/Documents/reference-tictactoe/node_modules/should/cjs/should.js:277:19)
-    at /Users/gunnarbirnir/Documents/reference-tictactoe/server/socket-app/tictactoe/tictactoe-game.spec.js:22:53
-    at Object.CreateGame (/Users/gunnarbirnir/Documents/reference-tictactoe/server/socket-app/tictactoe/tictactoe-handler.js:14:25)
-    at Object.executeCommand (/Users/gunnarbirnir/Documents/reference-tictactoe/server/socket-app/tictactoe/tictactoe-handler.js:116:38)
-    at Object.<anonymous> (/Users/gunnarbirnir/Documents/reference-tictactoe/server/socket-app/tictactoe/tictactoe-game.spec.js:21:26)
-    at attemptSync (/Users/gunnarbirnir/Documents/reference-tictactoe/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1950:24)
-    at QueueRunner.run (/Users/gunnarbirnir/Documents/reference-tictactoe/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1938:9)
-    at QueueRunner.execute (/Users/gunnarbirnir/Documents/reference-tictactoe/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1923:10)
-    at Spec.queueRunnerFactory (/Users/gunnarbirnir/Documents/reference-tictactoe/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:714:35)]]>
-   </failure>
-  </testcase>
+ <testsuite name="CreateGame command" timestamp="2016-12-09T20:29:45" hostname="localhost" time="0.003" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="CreateGame command" name="should emit GameCreated event" time="0.003" />
  </testsuite>
 </testsuites>
