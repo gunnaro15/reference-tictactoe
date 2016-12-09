@@ -7,9 +7,9 @@ module.exports = function (injected) {
         const board_size = 3;
         var gamefull = false;
         var board = [
-            ['.', '.', '.'],
-            ['.', '.', '.'],
-            ['.', '.', '.']
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
         ];
         var lastmove = '';
         var movecount = 0;
@@ -39,7 +39,7 @@ module.exports = function (injected) {
         }
 
         function cellTaken(move) {
-            return board[move.r][move.c] !== '.';
+            return board[move.r][move.c] !== '';
         }
 
         function sameLastMove(side) {
