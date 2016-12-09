@@ -7,25 +7,6 @@ var tictactoe = require('./tictactoe-handler')(inject({
     TictactoeState
 }));
 
-var createEvent = {
-    type: "GameCreated",
-    user: {
-        userName: "TheGuy"
-    },
-    name: "TheFirstGame",
-    timeStamp: "2014-12-02T11:29:29"
-};
-
-var joinEvent = {
-    type: "GameJoined",
-    user: {
-        userName: "Gummi"
-    },
-    name: "TheFirstGame",
-    timeStamp: "2014-12-02T11:29:29"
-};
-
-
 describe('create game command', function() {
 
     var given, when, then;
@@ -298,6 +279,69 @@ describe('place move command', function () {
                 move: { r: 0, c: 0 }
             }
         ];
+    })
 
+
+
+
+    it('should emit not your move event', function () {
+
+        given = [
+            {
+                gameId: "123987",
+                type: "GameCreated",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29"
+            },
+            {
+                gameId: "123987",
+                type: "GameJoined",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:29:29",
+                side: 'O'
+            },
+            {
+                gameId: "123987",
+                type: "MovePlaced",
+                user: {
+                    userName: "TheGuy"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:30:29",
+                side: 'X',
+                move: { r: 0, c: 0 }
+            },
+        ];
+        when =
+        {
+            gameId: "123987",
+            type: "PlaceMove",
+            user: {
+                userName: "Gummi"
+            },
+            name: "TheFirstGame",
+            timeStamp: "2014-12-02T11:31:29",
+            side: 'X',
+            move: { r: 1, c: 0 }
+        };
+        then = [
+            {
+                gameId: "123987",
+                type: "NotYourMove",
+                user: {
+                    userName: "Gummi"
+                },
+                name: "TheFirstGame",
+                timeStamp: "2014-12-02T11:31:29",
+                side: 'X',
+                move: { r: 1, c: 0 }
+            }
+        ];
     })
 });
