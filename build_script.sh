@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Remove the dist folder
+# Clean the dist folder
 echo "Cleaning..."
 rm -rf ./dist
+mkdir -p dist/public
 
 # Create githash
 if [ -z "$GIT_COMMIT" ]; then
@@ -18,14 +19,18 @@ echo "Building app"
 ./build.sh
 rc=$?
 if [[ $rc != 0 ]] ; then
-    echo "Npm build failed with exit code " $rc
+    echo "Build failed with exit code " $rc
     exit $rc
 fi
 
-# Create files that will be filled later
-mkdir -p dist/public
-touch dist/githash.txt
-touch dist/public/version.html
+# Run unit tests
+#echo "Running tests"
+#npm run test
+#rc=$?
+#if [[ $rc != 0 ]] ; then
+#    echo "Npm test failed with exit code " $rc
+#    exit $rc
+#fi
 
 # Put the githash into a file
 cat > ./dist/githash.txt <<_EOF_
@@ -33,8 +38,9 @@ $GIT_COMMIT
 _EOF_
 
 # Put the githash into a .env file for docker-compose.yml
-echo "GIT_COMMIT=$(cat ./dist/githash.txt)" >> ./build/.env
-echo "CURR_PORT=3000" >> ./build/.env 
+rm -f .env
+echo "GIT_COMMIT=$(cat ./dist/githash.txt)" >> .env
+echo "CURR_PORT=3000" >> .env 
 
 # Put the githash into a .env file for jenkins
 rm -f jenkins/.env
@@ -55,13 +61,9 @@ cat > ./dist/public/version.html << _EOF_
 </body>
 _EOF_
 
-# Move files needed for building the docker image to ./build/
-# Then move into that directory
-cp ./Dockerfile ./build/
-cp ./docker-compose.yml ./build/
+# Move files to the build folder
 cp ./run_fix.sh ./build/
 cp ./package.json ./build/
-cd build
 
 # Build docker image
 echo "Building docker image"

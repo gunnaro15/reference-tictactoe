@@ -3,7 +3,7 @@ FROM node
 # Set . as the working directory
 WORKDIR .
 # Copy everything from the build directory
-COPY . .
+COPY ./build .
 # Run npm install for the server
 RUN npm install --silent
 # Set the environment variable NODE_PATH=.
