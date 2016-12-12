@@ -920,7 +920,7 @@ describe('PlaceMove command', function () {
             },
             {
                 gameId: "123987",
-                type: "Game",
+                type: "GameDraw",
                 user: {
                     userName: "TheGuy"
                 },

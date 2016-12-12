@@ -103,7 +103,6 @@ module.exports = function(injected){
                                 side: cmd.side,
                                 move: cmd.move
                             });
-                            return;
                         }
 
                         eventHandler(events);

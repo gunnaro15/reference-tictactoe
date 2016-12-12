@@ -5,15 +5,6 @@ echo "Cleaning..."
 rm -rf ./dist
 mkdir -p dist/public
 
-# Create githash
-if [ -z "$GIT_COMMIT" ]; then
-  export GIT_COMMIT=$(git rev-parse HEAD)
-  export GIT_URL=$(git config --get remote.origin.url)
-fi
-
-# Remove .git from url in order to get https link to repo
-export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
-
 npm install
 
 # Build the app with build.sh
@@ -26,13 +17,22 @@ if [[ $rc != 0 ]] ; then
 fi
 
 # Run unit tests
-echo "Running tests"
+echo "Running unit tests"
 npm run test
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Npm test failed with exit code " $rc
     exit $rc
 fi
+
+# Create githash
+if [ -z "$GIT_COMMIT" ]; then
+  export GIT_COMMIT=$(git rev-parse HEAD)
+  export GIT_URL=$(git config --get remote.origin.url)
+fi
+
+# Remove .git from url in order to get https link to repo
+export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
 # Put the githash into a file
 cat > ./dist/githash.txt <<_EOF_
