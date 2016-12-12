@@ -9,4 +9,3 @@ rm -f address.txt
 echo $ADDRESS >> address.txt
 
 echo "Address: $ADDRESS" 
-
