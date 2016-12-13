@@ -53,12 +53,11 @@ module.exports=function(injected){
                     waitingFor.pop();
                 });
                 return me;
-
             },
             then:(whenDoneWaiting)=>{
                 function waitLonger(){
                     if(waitingFor.length>0){
-                        setTimeout(waitLonger, 0);
+                        setTimeout(waitLonger, 10);
                         return;
                     } else {
                       whenDoneWaiting();
