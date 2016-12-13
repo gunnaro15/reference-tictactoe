@@ -48,8 +48,7 @@ function serverModule(injected) {
 
             app.get('/*', function (req, res) {
                 // Render index.html in all cases and pass route handling to react
-                console.log('GUNNNNNNNNNNNNNNNNNNNNNNAR: ' + __dirname);
-                res.sendFile(Path.join(__dirname,'static','gunnar.html'));
+                res.sendFile(Path.join(__dirname,'static','index.html'));
             });
 
             var server = app.listen(PORT, CALLBACK);
