@@ -82,6 +82,7 @@ module.exports=function(injected){
             createGame:()=>{
                 var gId = generateUUID();
                 var cmdId = generateUUID();
+                console.log('Created Game: ' + gId);
                 routingContext.commandRouter.routeMessage({commandId:cmdId, type:"CreateGame", gameId:gId});
                 return me;
             },
