@@ -42,7 +42,7 @@ _EOF_
 # Put the githash into a .env file for docker-compose.yml
 rm -f .env
 echo "GIT_COMMIT=$(cat ./dist/githash.txt)" >> .env
-echo "CURR_PORT=8080" >> .env 
+echo "CURR_PORT=3000" >> .env 
 
 # Put the githash into a .env file for jenkins
 rm -f jenkins/.env
