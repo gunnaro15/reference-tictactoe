@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Clean the dist folder
+# Clean the dist folder and remove test_results
 echo "Cleaning..."
 rm -rf ./dist
 mkdir -p dist/public
+rm -rf ./test_results
 
 npm install
 
