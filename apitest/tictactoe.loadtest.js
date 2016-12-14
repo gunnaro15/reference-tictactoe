@@ -15,7 +15,7 @@ const testAPI = TestAPI(inject({
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
 
-/*describe('TicTacToe load test', function(){
+describe('TicTacToe load test', function(){
 
     beforeEach(function(done){
         var testapi = testAPI();
@@ -25,17 +25,37 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
         });
     });
 
-    const count = 10;
-    const timelimit = 2000;
+    const count = 100;
+    const timelimit = 5000;
 
-    it('should play ' + count + ' games within '+ timelimit +'ms', function(done){
+    it('should create ' + count + ' games within '+ timelimit +'ms', function(done){
 
-        var userA, userB;
         var startMillis = new Date().getTime();
 
-        for(var i=0; i<count; i++) {
-
+        var user;
+        var users=[];
+        for(var i=0; i<count; i++){
+            user = userAPI("User#" + i);
+            users.push(user);
+            user.createGame();
         }
 
+        user = userAPI("Final user");
+        user.expectGameCreated()
+            .createGame()
+            .then(function(){
+                user.disconnect();
+                _.each(users, function(usr){
+                    usr.disconnect();
+                });
+
+                var endMillis = new Date().getTime();
+                var duration = endMillis - startMillis;
+                if(duration > timelimit){
+                    done.fail(duration + " exceeds limit " + timelimit);
+                } else {
+                    done();
+                }
+            });
     });
-});*/
+});

@@ -82,19 +82,18 @@ module.exports=function(injected){
             createGame:()=>{
                 var gId = generateUUID();
                 var cmdId = generateUUID();
-                console.log('Created Game: ' + gId);
                 routingContext.commandRouter.routeMessage({commandId:cmdId, type:"CreateGame", gameId:gId});
                 return me;
             },
             expectGameJoined:()=>{
-              waitingFor.push("expectGameJoined");
-              routingContext.eventRouter.on('GameJoined', function(game){
-                  Game = game;
-                  expect(game.gameId).not.toBeUndefined();
-                  var index = waitingFor.indexOf("expectGameJoined");
-                  if(index > -1) waitingFor.splice(index, 1);
-              });
-              return me;
+                waitingFor.push("expectGameJoined");
+                routingContext.eventRouter.on('GameJoined', function(game){
+                    Game = game;
+                    expect(game.gameId).not.toBeUndefined();
+                    var index = waitingFor.indexOf("expectGameJoined");
+                    if(index > -1) waitingFor.splice(index, 1);
+                });
+                return me;
             },
             joinGame:(gId)=>{
                 var cmdId = generateUUID();
@@ -105,15 +104,15 @@ module.exports=function(injected){
                 return Game;
             },
             expectMoveMade:()=>{
-              waitingFor.push("expectMoveMade");
-              routingContext.eventRouter.on('MovePlaced', function(move){
-                  expect(move.gameId).not.toBeUndefined();
-                  if(move.gameId === Game.gameId) {
-                      var index = waitingFor.indexOf("expectMoveMade");
-                      if(index > -1) waitingFor.splice(index, 1);
-                  }
-              });
-              return me;
+                waitingFor.push("expectMoveMade");
+                routingContext.eventRouter.on('MovePlaced', function(move){
+                    expect(move.gameId).not.toBeUndefined();
+                    if(move.gameId === Game.gameId) {
+                        var index = waitingFor.indexOf("expectMoveMade");
+                        if(index > -1) waitingFor.splice(index, 1);
+                    }
+                });
+                return me;
             },
             placeMove:(row, column)=>{
                 var cmdId = generateUUID();
@@ -121,15 +120,15 @@ module.exports=function(injected){
                 return me;
             },
             expectGameWon:()=>{
-              waitingFor.push("expectGameWon");
-              routingContext.eventRouter.on('GameWon', function(won){
-                  expect(won.gameId).not.toBeUndefined();
-                  if(won.gameId === Game.gameId) {
-                      var index = waitingFor.indexOf("expectGameWon");
-                      if(index > -1) waitingFor.splice(index, 1);
-                  }
-              });
-              return me;
+                waitingFor.push("expectGameWon");
+                routingContext.eventRouter.on('GameWon', function(won){
+                    expect(won.gameId).not.toBeUndefined();
+                    if(won.gameId === Game.gameId) {
+                        var index = waitingFor.indexOf("expectGameWon");
+                        if(index > -1) waitingFor.splice(index, 1);
+                    }
+                });
+                return me;
             },
         };
         return me;
