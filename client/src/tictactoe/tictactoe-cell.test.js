@@ -1,4 +1,8 @@
-import ReactTestUtils from 'react-addons-test-utils' import TictactoeBoardModule from './TictactoeBoard'; import ReactDOM from 'react-dom'; import React from 'react'; import { shallow } from 'enzyme';
+import ReactTestUtils from 'react-addons-test-utils';
+import TictactoeBoardModule from './TictactoeBoard';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { shallow } from 'enzyme';
 import TicCellComponent from './TicCell';
 import MessageRouter from '../common/framework/message-router';
 
@@ -30,7 +34,7 @@ describe("Tic Cell", function () {
     });
 
     it('should ignore move with matching gameId but not coordinates',function(){
-
+      
     });
 
     it('should ignore move with matching coordinates, but not matching gameId',function(){
@@ -40,6 +44,7 @@ describe("Tic Cell", function () {
     it('should issue PlaceMove command with gameId, mySide and coordinates when clicked', ()=>{
         component.find('div').simulate('click');
 
-        .. check whether correct command was dispatched through command router
+
+        //.. check whether correct command was dispatched through command router
     });
 });

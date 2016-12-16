@@ -14,7 +14,7 @@ function serverModule(injected) {
     const Postgres = require('./db/postgres');
     const DbConfig = require('./database.json');
 
-    const dbConfig = DbConfig[environment];
+    const dbConfig = DbConfig['prod'];
 
     const ChatAppContext = require('./socket-app/server-app-context');
 
