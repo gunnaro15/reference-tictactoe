@@ -12,6 +12,7 @@ echo $INSTANCE >> instance.txt
 rm -f ../client/src/test_env.js
 echo "module.exports = '$ADDRESS';" >> ../client/src/test_env.js
 
+# Check if server is ready
 status='unknown'
 while [ ! "${status}" == "ok" ]
 do
