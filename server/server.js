@@ -4,7 +4,6 @@ function serverModule(injected) {
     var PORT = injected('port');
 
     const config = require('./config.js')[ENV];
-    const environment = require('./environment.js')[ENV];
 
     const Express = require('express');
     const Session = require('express-session');
