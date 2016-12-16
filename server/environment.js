@@ -1,1 +1,4 @@
-module.exports = { gunnar: 'prod' };
+module.exports = {
+    development: 'dev',
+    production: 'prod'
+};

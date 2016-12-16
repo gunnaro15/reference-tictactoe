@@ -12,7 +12,7 @@ status='unknown'
 while [ ! "${status}" == "ok" ]
 do
    echo Checking status of host, currently ${status}
-   status=$(ssh -i "~/gunnar-key-pair.pem"  -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 ec2-user@$ADDRESS echo ok 2>&1)
+   status=$(ssh -i "/Users/gunnarbirnir/Downloads/gunnar-key-pair.pem"  -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 ec2-user@$ADDRESS echo ok 2>&1)
    sleep 2
 done
 

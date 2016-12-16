@@ -15,7 +15,7 @@ function routingContext(injected){
     const environment = injected('env');
     var socketURI;
     if(environment==='development' || environment==='test'){
-        socketURI='http://52.211.165.216/'
+        socketURI='http://52.50.15.77/'
     } else {
         socketURI='/'
     }
