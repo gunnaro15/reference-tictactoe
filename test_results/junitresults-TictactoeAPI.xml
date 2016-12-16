@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Tictactoe API" timestamp="2016-12-14T21:28:03" hostname="localhost" time="0.213" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="Tictactoe API" name="should be able to play game to end" time="0.211" />
+ <testsuite name="Tictactoe API" timestamp="2016-12-16T12:02:51" hostname="localhost" time="0.19" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Tictactoe API" name="should be able to play game to end" time="0.19" />
  </testsuite>
 </testsuites>

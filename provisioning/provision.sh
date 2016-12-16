@@ -5,8 +5,10 @@ export INSTANCE=$(aws ec2 run-instances --image-id ami-9398d3e0 --security-group
 export ADDRESS=$(aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[0].Instances[0].PublicIpAddress' | tr -d '"')
 
 # Store the address
-rm -f address.txt
-echo $ADDRESS >> address.txt
+#rm -f test_address.txt
+#echo $ADDRESS >> test_address.txt
+rm -f ../client/src/test_env.js
+echo "module.exports = '$ADDRESS';" >> ../client/src/test_env.js
 
 status='unknown'
 while [ ! "${status}" == "ok" ]

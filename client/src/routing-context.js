@@ -5,6 +5,7 @@ const MessageRouter = require('./common/framework/message-router');
 const IncomingSocketMessageDispatcherModule = require('./common/framework/incoming-socket-message-dispatcher');
 const OutgoingSocketIoMessagePortModule = require('./common/framework/outgoing-socket-io-message-port');
 
+const test_env = require('./test_env');
 
 function routingContext(injected){
 
@@ -15,7 +16,7 @@ function routingContext(injected){
     const environment = injected('env');
     var socketURI;
     if(environment==='development' || environment==='test'){
-        socketURI='http://52.50.15.77/'
+        socketURI='http://' + test_env + '/'
     } else {
         socketURI='/'
     }
