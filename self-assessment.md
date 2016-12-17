@@ -18,7 +18,7 @@
 
 - jenkins/run_app.sh: Run the app on the production server.
 
-- jenkins/run_test.sh: Run the app in the test server.
+- jenkins/run_test.sh: Run the app on the test server.
 
 - provisioning/provision.sh: Provision a new test server.
 
