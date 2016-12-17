@@ -6,78 +6,60 @@
 
 ## Scripts
 
-Outline what script files you created and the purpose of each file. Each file should be commented. This could be
+- build_script.sh: Build the app, run unit tests, build Docker image and push it to Dockerhub.
 
-- Docker build
+- build.sh: The npm build commands, to build the app.
 
-- Docker compose
+- Dockerfile: Information for docker build. 
 
-- AWS Provisioning 
+- docker-compose.yml: Information for docker-compose up.
 
-- Other scripts
+- run_fix.sh: Wait for database to get started, migrate it and then run the app.
+
+- jenkins/run_app.sh: Run the app on the production server.
+
+- jenkins/run_test.sh: Run the app in the test server.
+
+- provisioning/provision.sh: Provision a new test server.
 
 
 
 ## Testing & logic
 
-Outline what tests you created.
+- Unit tests
 
-- UnitTests, server logic TDD (Git commit log)
+- API Acceptance test
 
-- API Acceptance test - fluent API
-
-- Load test loop
-
-- UI TDD
-
-- Is the game playable?
+- Load test loop: I was not able to make the API test work in a loop so I made a very simple load test, similar to the chat load test. It just creates 100 games.
 
 
 
 ## Data migration
 
-Did you create a data migration.
-
-- Migration up and down
+- I made a migration up to add a missing column.
 
 
 
 ## Jenkins
 
-Do you have the following Jobs and what happens in each Job:
+- Commit Stage(Build): Runs build_script.sh.
 
-- Commit Stage
+- Acceptance Stage(API tests): Provisions a new server and runs the API tests.
 
-- Acceptance Stage
+- Capacity Stage(Load tests): Uses the same server as the Acceptance Stage to run load tests and then terminates the server.
 
-- Capacity Stage
-
-- Other
+- Production(Deploy): Deploys the app to the production server.
 
 
 
-Did you use any of the following features in Jenkins?
+Jenkins features
 
-- Schedule or commit hooks
+- Schedule and commit hooks: After each git push the pipeline starts: Build -> API tests -> Load tests -> Deploy.
 
-- Pipeline
-
-- Jenkins file
-
-- Test reports
-
-- Other
-
-
-
-## Monitoring
-
-Did you do any monitoring?
-
-- URL to monitoring tool. Must be open or include username and pass.
+- Test reports: The first three jobs publish reports for unit tests, API tests and then load tests.
 
 
 
 ## Other
 
-Anything else you did to improve you deployment pipeline of the project itself?
+- Like mentioned above I provision a new server for each build to run the API and load tests on and then terminate it.
