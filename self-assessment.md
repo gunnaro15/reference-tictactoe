@@ -62,4 +62,4 @@ Jenkins features:
 
 ## Other
 
-- Like mentioned above I provision a new server for each build to run the API and load tests on and then terminate it.
+- Like mentioned above I provision a new server for each build to run the API and load tests on and then terminate it when they have finished.
