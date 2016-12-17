@@ -9,3 +9,6 @@ chmod +x ./docker-compose
 
 # Run docker-compose
 sudo ./docker-compose up -d
+
+# Make sure containers are ready
+sleep 30
