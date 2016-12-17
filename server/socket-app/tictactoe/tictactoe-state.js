@@ -15,7 +15,6 @@ module.exports = function (injected) {
         var movecount = 0;
 
         function processEvent(event) {
-            //console.log(event.type);
             if(event.type==="GameJoined") {
                 gamefull=true;
             }
@@ -23,13 +22,11 @@ module.exports = function (injected) {
                 board[event.move.r][event.move.c] = event.side;
                 lastmove = event.side;
                 movecount++;
-                //console.log('cell(' + event.move.r + ', ' + event.move.c + ') = ' + event.side);
             }
         }
 
         function processEvents(history) {
             _.each(history, processEvent);
-            //printBoard();
         }
 
         processEvents(history);
@@ -63,12 +60,6 @@ module.exports = function (injected) {
 
         function gameOver() {
             return movecount===(board_size*board_size);
-        }
-
-        function printBoard() {
-            for(var i=0; i<board_size; i++) {
-                console.log(board[i][0] + ' ' + board[i][1] + ' ' + board[i][2]);
-            }
         }
 
         return {
