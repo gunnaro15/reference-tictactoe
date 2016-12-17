@@ -52,7 +52,7 @@
 
 
 
-Jenkins features
+Jenkins features:
 
 - Schedule and commit hooks: After each git push the pipeline starts: Build -> API tests -> Load tests -> Deploy.
 
